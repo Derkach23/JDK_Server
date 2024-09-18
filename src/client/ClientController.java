@@ -1,26 +1,32 @@
 package client;
 
 import java.io.*;
-import java.net.*;
+import java.net.Socket;
 
-public class Client {
+public class ClientController implements ClientControllerInterface {
     private Socket socket;
-    private BufferedReader in;
     private BufferedWriter out;
-    private ClientGUI gui;
+    private ClientGUIInterface gui;
 
-    public Client(String serverAddress, int port, ClientGUI gui) {
+    public ClientController(ClientGUIInterface gui) {
         this.gui = gui;
+    }
+
+    @Override
+    public void connectToServer() {
         try {
-            socket = new Socket(serverAddress, port);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            socket = new Socket("127.0.0.1", 8189);
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            new Thread(this::receiveMessages).start();
+
+            new Thread(() -> {
+                // Логика получения сообщений
+            }).start();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    @Override
     public void sendMessage(String message) {
         try {
             out.write(message);
@@ -31,12 +37,10 @@ public class Client {
         }
     }
 
-    private void receiveMessages() {
+    @Override
+    public void disconnect() {
         try {
-            String message;
-            while ((message = in.readLine()) != null) {
-                gui.addMessage(message);
-            }
+            socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
