@@ -1,6 +1,6 @@
-package server;
+package server.Interface;
 
-public class ServerControllerInterface {
+public interface ServerControllerInterface {
     void startServer();
     void stopServer();
     void broadcastMessage(String message);

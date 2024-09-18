@@ -1,12 +1,14 @@
 package server;
 
+import server.Interface.ServerControllerInterface;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ServerGUI {
     private ServerControllerInterface controller;
 
-    public ServerGUI(ServerControllerInterface controller) {
+    public ServerGUI() {
         this.controller = controller;
         setupUI();
     }

@@ -1,5 +1,9 @@
 package client;
 
+import client.Interface.ClientControllerInterface;
+import client.Interface.ClientGUIInterface;
+import server.ServerController;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -8,7 +12,7 @@ public class ClientController implements ClientControllerInterface {
     private BufferedWriter out;
     private ClientGUIInterface gui;
 
-    public ClientController(ClientGUIInterface gui) {
+    public ClientController(ClientGUIInterface gui, ServerController serverController) {
         this.gui = gui;
     }
 

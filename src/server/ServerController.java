@@ -1,14 +1,16 @@
 package server;
 
+import server.Interface.ServerControllerInterface;
+import server.Interface.ServerRepositoryInterface;
+
 import java.io.*;
 import java.net.*;
-import java.util.List;
 
 public class ServerController implements ServerControllerInterface {
     private ServerRepositoryInterface repository;
     private ServerSocket serverSocket;
 
-    public ServerController(ServerRepositoryInterface repository) {
+    public ServerController(ServerGUI serverGUI, ServerRepositoryInterface repository) {
         this.repository = repository;
     }
 

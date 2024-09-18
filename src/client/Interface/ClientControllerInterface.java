@@ -1,4 +1,4 @@
-package client;
+package client.Interface;
 
 public interface ClientControllerInterface {
     void connectToServer();

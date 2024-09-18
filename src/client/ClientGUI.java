@@ -1,14 +1,17 @@
 package client;
 
+import client.Interface.ClientControllerInterface;
+import client.Interface.ClientGUIInterface;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ClientGUI implements ClientGUIInterface {
-    private ClientControllerInterface controller;
+    private ClientControllerInterface controller = null;
     private JTextArea chatArea;
     private JTextField messageField;
 
-    public ClientGUI(ClientControllerInterface controller) {
+    public ClientGUI() {
         this.controller = controller;
         setupUI();
     }
